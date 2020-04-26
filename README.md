@@ -20,13 +20,13 @@ pip install  -r requirements.txt
 To run locally, run
 
 ```bash
-python main.py
+python lib/main.py
 ```
 
 To deploy to the App Engine server, run
 
 ```bash
-gcloud deploy app
+gcloud app deploy
 ```
 
 After properly configuring your gcloud CLI.
