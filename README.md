@@ -23,7 +23,11 @@ To run locally, run
 python lib/main.py
 ```
 
-To deploy to the App Engine server, run
+To deploy to the App Engine server, first download the service-accounts.json secret file from Firebase and put on the following path:
+
+```bash
+secrets/sgn-test-firestore-access.json
+```
 
 ```bash
 gcloud app deploy
