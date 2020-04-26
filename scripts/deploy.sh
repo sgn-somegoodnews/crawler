@@ -5,5 +5,5 @@ if [ ! -f secrets/sgn-test-firestore-access.json ]; then
     exit 1
 fi
 
-gcloud app deploy
-gcloud app deploy cron.yaml
+gcloud app deploy -q
+gcloud app deploy cron.yaml -q
