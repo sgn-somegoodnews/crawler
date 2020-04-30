@@ -20,7 +20,7 @@ pip install  -r requirements.txt
 To run locally, run
 
 ```bash
-python lib/main.py
+python main.py
 ```
 
 To deploy to the App Engine server, first download the service-accounts.json secret file from Firebase and put on the following path:

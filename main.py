@@ -1,7 +1,9 @@
 import firebase_admin
 from firebase_admin import firestore, credentials
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 import datetime
+
+from tweet import find_tweets
 
 app = Flask(__name__)
 
@@ -10,9 +12,27 @@ firebase_admin.initialize_app(cred)
 
 news = firestore.client().collection('news')
 
+def coerce(num, min, max):
+    if (num < min):
+        return min
+    if (num > max):
+        return max
+    return num
+
 @app.route('/')
 def hello():
     return 'Welcome to Some Good News API!'
+
+@app.route('/tweets')
+def tweets():
+    query = request.args.get('query')
+    if (query == None or len(query.strip()) < 1):
+        return 'Please provide a valid query.', 422
+
+    num = coerce(int(request.args.get('num')) or 10, 0, 10)
+
+    results = find_tweets(query, num)
+    return jsonify(results)
 
 @app.route('/update-news')
 def updateNews():
