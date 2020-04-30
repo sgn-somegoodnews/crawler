@@ -29,7 +29,7 @@ def tweets():
     if (query == None or len(query.strip()) < 1):
         return 'Please provide a valid query.', 422
 
-    num = coerce(int(request.args.get('num')) or 10, 0, 10)
+    num = coerce(int(request.args.get('num') or '10'), 0, 10)
 
     results = find_tweets(query, num)
     return jsonify(results)
